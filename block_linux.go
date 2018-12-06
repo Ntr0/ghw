@@ -340,6 +340,8 @@ func (ctx *context) disks() []*Disk {
 			busType = "IDE"
 		} else if regexNVMeDev.MatchString(dname) {
 			busType = "NVMe"
+		} else if strings.HasPrefix(dname, "vd") {
+			busType = "VIRTIO"
 		}
 		if busType == "" {
 			continue
